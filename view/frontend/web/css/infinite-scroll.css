@@ -1,0 +1,64 @@
+/* ETechFlow PSO Premium — Infinite Scroll UI */
+
+#etechflow-pso-premium-is-loading {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 30px 0;
+    color: #555;
+    font-size: 0.95em;
+}
+
+#etechflow-pso-premium-is-loading .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e0e0e0;
+    border-top-color: #1f4fa0;
+    border-radius: 50%;
+    animation: etechflow-pso-premium-spin 0.8s linear infinite;
+}
+
+@keyframes etechflow-pso-premium-spin {
+    to { transform: rotate(360deg); }
+}
+
+.etechflow-pso-premium-is-loadmore {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 32px;
+    background: #1f4fa0;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.etechflow-pso-premium-is-loadmore:hover {
+    background: #16407f;
+}
+
+#etechflow-pso-premium-is-backtop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(31, 79, 160, 0.9);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 1;
+    display: none;
+    z-index: 1000;
+    transition: background 0.15s, transform 0.15s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+#etechflow-pso-premium-is-backtop:hover {
+    background: rgba(31, 79, 160, 1);
+    transform: translateY(-2px);
+}

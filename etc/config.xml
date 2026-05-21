@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <etechflow_pso_premium>
+            <license>
+                <production_environment>1</production_environment>
+            </license>
+            <general>
+                <enabled>1</enabled>
+            </general>
+            <infinite_scroll>
+                <enabled>0</enabled>
+                <enable_category>1</enable_category>
+                <enable_search>1</enable_search>
+                <scroll_threshold_px>400</scroll_threshold_px>
+                <max_pages>5</max_pages>
+                <show_back_to_top>1</show_back_to_top>
+            </infinite_scroll>
+            <bulk_sweep>
+                <enabled>0</enabled>
+                <batch_size>500</batch_size>
+                <scan_paths>catalog/product
+catalog/category
+wysiwyg</scan_paths>
+            </bulk_sweep>
+            <logging>
+                <detailed_enabled>0</detailed_enabled>
+            </logging>
+        </etechflow_pso_premium>
+    </default>
+</config>

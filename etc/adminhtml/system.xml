@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="etechflow_pso_premium" translate="label" sortOrder="66" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Page Speed Optimizer Premium</label>
+            <tab>etechflow</tab>
+            <resource>ETechFlow_PageSpeedOptimizerPremium::config</resource>
+
+            <group id="license" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Premium License</label>
+                <field id="license_key" translate="label comment" sortOrder="10" type="obscure" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Premium License Key</label>
+                    <comment><![CDATA[Premium-tier key. Pro license does NOT unlock Premium features — they need this key. Or use Bundle key in Pro settings.]]></comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+                <field id="production_environment" translate="label comment" sortOrder="20" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Production Environment</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="general" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label comment" sortOrder="10" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Premium Features</label>
+                    <comment><![CDATA[Master switch for ALL Premium features (Infinite Scroll + bulk sweep + detailed logging).]]></comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="infinite_scroll" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Infinite Scroll</label>
+                <comment><![CDATA[Replaces traditional pagination with smooth infinite scroll on catalog category + search-result pages. Hyvä-compatible — no jQuery dependency. After N auto-loaded pages, switches to a manual "Load More" button to prevent infinite loops on huge catalogs.]]></comment>
+                <field id="enabled" translate="label comment" sortOrder="10" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Infinite Scroll</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="enable_category" translate="label comment" sortOrder="20" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Apply to Category pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+                <field id="enable_search" translate="label comment" sortOrder="30" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Apply to Search Result pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+                <field id="scroll_threshold_px" translate="label comment" sortOrder="40" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Trigger threshold (px before bottom)</label>
+                    <comment><![CDATA[How far from the bottom to trigger the next-page fetch. Default 400px.]]></comment>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+                <field id="max_pages" translate="label comment" sortOrder="50" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max auto-loaded pages before "Load More" button</label>
+                    <comment><![CDATA[After this many pages auto-load on scroll, switch to a manual click button. Default 5.]]></comment>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+                <field id="show_back_to_top" translate="label comment" sortOrder="60" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show "Back to top" button</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+            </group>
+
+            <group id="bulk_sweep" translate="label" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Bulk-Sweep Image Optimization</label>
+                <comment><![CDATA[Walks configured media folders daily and enqueues every un-optimized image into PSO Pro's view queue. PSO Pro's cron worker then drains the queue normally. Useful for migrating existing catalogs.]]></comment>
+                <field id="enabled" translate="label comment" sortOrder="10" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable daily bulk-sweep cron</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="batch_size" translate="label comment" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Batch size per sweep run</label>
+                    <comment><![CDATA[How many images to enqueue per sweep cron run. Default 500.]]></comment>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+                <field id="scan_paths" translate="label comment" sortOrder="30" type="textarea" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Folder paths to scan (relative to pub/media)</label>
+                    <comment><![CDATA[One per line. Defaults: <code>catalog/product</code>, <code>catalog/category</code>, <code>wysiwyg</code>.]]></comment>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+            </group>
+
+            <group id="logging" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Detailed Logging</label>
+                <field id="detailed_enabled" translate="label comment" sortOrder="10" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable detailed per-image optimization logging</label>
+                    <comment><![CDATA[Writes a daily log to <code>var/log/etechflow_pso_premium_optimization_YYYY-MM-DD.log</code> capturing per-image engine, bytes-before/after, savings %, duration. Useful for agencies + ops teams.]]></comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

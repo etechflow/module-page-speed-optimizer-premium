@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <!--
+            Bulk-sweep daily at 03:30 (off-peak). Picks up any newly added
+            images in the configured paths. Idempotent — already-optimized
+            paths are skipped via the optimization_log lookup.
+        -->
+        <job name="etechflow_pso_premium_bulk_sweep"
+             instance="ETechFlow\PageSpeedOptimizerPremium\Cron\BulkSweep"
+             method="execute">
+            <schedule>30 3 * * *</schedule>
+        </job>
+    </group>
+</config>

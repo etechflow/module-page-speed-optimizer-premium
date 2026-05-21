@@ -1,0 +1,19 @@
+<?php
+/**
+ * @var \ETechFlow\PageSpeedOptimizerPremium\Block\InfiniteScroll\Initializer $block
+ * @var \Magento\Framework\Escaper $escaper
+ *
+ * Emits the inline bootstrap that hands settings to the infinite-scroll
+ * JS. Renders ZERO output when the feature is disabled or we're not on
+ * a category/search page — no JS footprint on irrelevant pages.
+ */
+if (!$block->shouldRender()) {
+    return;
+}
+$settings = $block->getSettingsJson();
+$scriptUrl = $block->getViewFileUrl('ETechFlow_PageSpeedOptimizerPremium::js/infinite-scroll.js');
+?>
+<script>
+window.etechflowPsoPremiumInfiniteScrollSettings = <?= /* @noEscape */ $settings; ?>;
+</script>
+<script src="<?= $escaper->escapeUrl($scriptUrl); ?>" defer></script>

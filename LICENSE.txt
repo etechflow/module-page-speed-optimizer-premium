@@ -1,0 +1,17 @@
+eTechFlow Proprietary License — ETechFlow Page Speed Optimizer Premium
+========================================================================
+
+Copyright (c) 2026 eTechFlow Pvt. Ltd. All rights reserved.
+
+Per-installation commercial Premium-tier license. Premium adds, on top
+of the Page Speed Optimizer Pro feature set:
+  - Infinite Scroll for category + search-result pages
+  - Bulk-sweep image optimization via cron (existing folder content)
+  - Detailed image-optimization process logging
+  - Per-device JS merging (planned v1.1)
+  - AJAX Shopping Cart (planned v1.1)
+
+Local development hosts auto-bypass licensing identically to the Pro
+module. The Bundle License Key activates this module too.
+
+For licensing inquiries, please contact info@etechflow.com.
