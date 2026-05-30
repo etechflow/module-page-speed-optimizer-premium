@@ -42,6 +42,16 @@ First commercial release of the **Premium** add-on module. Pairs with PSO Pro to
 
 **4 of 6 Premium-only features in v1.0. AJAX Cart + per-device JS merging in v1.1.**
 
+### Hardening (the v1.7.0 lesson)
+
+- **`Setup/Patch/Data/V100ReleaseMarker.php`** — no-op release marker
+  patch. Establishes the always-a-patch discipline previously adopted in
+  NDE v1.7.1, BED v1.2.2, and ISP v2.0.0. Every release ships at least
+  one patch so `setup:upgrade` always has something to register in
+  `patch_list` — surfacing FS / permissions / DI errors during the patch
+  phase (which retries cleanly) instead of at the end of the upgrade
+  (which doesn't). Inaugural patch for v1.0.0.
+
 ### Setup
 
 ```bash
