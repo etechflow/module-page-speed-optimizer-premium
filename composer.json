@@ -2,7 +2,7 @@
     "name": "etechflow/module-page-speed-optimizer-premium",
     "description": "Magento 2 Page Speed Optimizer Premium — adds Infinite Scroll for category pages, advanced bulk-sweep image optimization via cron, detailed optimization logging, per-device JS merging. Requires ETechFlow Page Speed Optimizer Pro. Full Amasty Page Speed Optimizer Premium ($599) alternative at $499.",
     "type": "magento2-module",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "proprietary",
     "authors": [
         {

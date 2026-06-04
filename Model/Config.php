@@ -57,6 +57,8 @@ class Config
     public function isInfiniteScrollEnabled(): bool
     {
         if (!$this->isEnabled()) return false;
+        // Portal plan can toggle this feature off; HMAC/bundle/dev keep it on.
+        if (!$this->licenseValidator->isFeatureEnabled('infinite_scroll')) return false;
         return $this->scopeConfig->isSetFlag(self::XML_PATH_IS_ENABLED, ScopeInterface::SCOPE_STORE);
     }
 
@@ -92,6 +94,7 @@ class Config
     public function isBulkSweepEnabled(): bool
     {
         if (!$this->isEnabled()) return false;
+        if (!$this->licenseValidator->isFeatureEnabled('bulk_sweep')) return false;
         return $this->scopeConfig->isSetFlag(self::XML_PATH_SWEEP_ENABLED, ScopeInterface::SCOPE_STORE);
     }
 
@@ -117,6 +120,7 @@ class Config
     public function isDetailedLoggingEnabled(): bool
     {
         if (!$this->isEnabled()) return false;
+        if (!$this->licenseValidator->isFeatureEnabled('detailed_logging')) return false;
         return $this->scopeConfig->isSetFlag(self::XML_PATH_DETAILED_LOGGING, ScopeInterface::SCOPE_STORE);
     }
 }

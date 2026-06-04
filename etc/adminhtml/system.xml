@@ -10,14 +10,50 @@
 
             <group id="license" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Premium License</label>
-                <field id="license_key" translate="label comment" sortOrder="10" type="obscure" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="license_key" translate="label comment tooltip" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Premium License Key</label>
-                    <comment><![CDATA[Premium-tier key. Pro license does NOT unlock Premium features — they need this key. Or use Bundle key in Pro settings.]]></comment>
+                    <tooltip>Paste your eTechFlow SP-XXXX subscription key (auto-saved after Stripe payment) or a per-module/bundle HMAC key.</tooltip>
+                    <comment><![CDATA[Paste your eTechFlow <strong>SP-XXXX</strong> subscription key (generated automatically after Stripe payment) OR a per-module HMAC key. Pro license does NOT unlock Premium — it needs this key, or the shared Bundle key. Buy a subscription at <a href="etechflow_psopremium/license/gate">License &amp; Plans</a>.]]></comment>
+                </field>
+                <field id="issued_key" translate="label comment" sortOrder="15" type="obscure" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Issued Key (auto)</label>
+                    <comment><![CDATA[Set automatically on first successful validation. Used to restore the key after an IP-block event. Do not edit.]]></comment>
                     <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
-                <field id="production_environment" translate="label comment" sortOrder="20" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="portal_url" translate="label comment" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>License Portal URL</label>
+                    <comment><![CDATA[eTechFlow licensing portal endpoint. Update if your portal URL changes.]]></comment>
+                </field>
+                <field id="bundle_license_key" translate="label comment" sortOrder="30" type="obscure" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bundle License Key</label>
+                    <comment><![CDATA[Shared key that activates every eTechFlow module on this host. Set EITHER this OR the Premium key above.]]></comment>
+                    <config_path>etechflow_bundle/license/license_key</config_path>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+                <field id="production_environment" translate="label comment tooltip" sortOrder="40" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Production Environment</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip>Yes for live sites, No for dev/staging on non-standard domains.</tooltip>
+                    <comment><![CDATA[<strong>Yes</strong> — live store; license enforced. <strong>No</strong> — dev/staging; licensing bypassed. Common dev hosts auto-detect.]]></comment>
+                </field>
+            </group>
+
+            <group id="payment" translate="label" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Payment Settings (Stripe)</label>
+                <comment><![CDATA[Enter your Stripe API keys so merchants can pay for a license directly from this admin. Keys are encrypted at rest.]]></comment>
+                <field id="stripe_secret_key" translate="label comment" sortOrder="10" type="obscure" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Stripe Secret Key</label>
+                    <comment><![CDATA[Your Stripe secret key (sk_test_... or sk_live_...).]]></comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+                <field id="stripe_publishable_key" translate="label comment" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Stripe Publishable Key</label>
+                    <comment><![CDATA[Your Stripe publishable key (pk_test_... or pk_live_...).]]></comment>
+                </field>
+                <field id="stripe_currency" translate="label comment" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Currency</label>
+                    <comment><![CDATA[3-letter ISO currency code, e.g. usd, gbp, eur. Default: usd]]></comment>
+                    <validate>validate-length maximum-length-3</validate>
                 </field>
             </group>
 

@@ -6,6 +6,9 @@
             <license>
                 <production_environment>1</production_environment>
             </license>
+            <payment>
+                <stripe_currency>usd</stripe_currency>
+            </payment>
             <general>
                 <enabled>1</enabled>
             </general>

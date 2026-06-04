@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!--
+            DELIBERATELY does NOT declare the shared eTechFlow::root / settings /
+            configuration nodes — those are owned by one module in the suite to
+            avoid the duplicate-id admin crash. We only attach a single child to
+            the existing eTechFlow::root parent. If root is absent (standalone
+            install) Magento simply drops this orphan, no crash; the gate page
+            stays reachable via its direct URL + the link in the License config.
+        -->
+        <add id="ETechFlow_PageSpeedOptimizerPremium::license"
+             title="Page Speed Premium — License &amp; Plans"
+             module="ETechFlow_PageSpeedOptimizerPremium"
+             sortOrder="80"
+             parent="eTechFlow::root"
+             action="etechflow_psopremium/license/gate"
+             resource="ETechFlow_PageSpeedOptimizerPremium::config"/>
+    </menu>
+</config>

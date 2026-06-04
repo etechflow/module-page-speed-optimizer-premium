@@ -4,6 +4,25 @@ All notable changes to this module. Adheres to [Semantic Versioning](https://sem
 
 ---
 
+## [1.0.1] — 2026-06-04 — Portal licensing + in-admin purchase
+
+### Added
+
+**Hybrid portal licensing (eTechFlow Store Portal)**
+- `SP-XXXX` subscription keys are now validated live against the eTechFlow licensing portal with strict domain + server-IP binding (no offline grace). Per-module HMAC keys and the shared bundle key continue to work for offline activation.
+- Plan-level feature gating: `Config::isInfiniteScrollEnabled()`, `isBulkSweepEnabled()`, and `isDetailedLoggingEnabled()` now also honour the active subscription's `infinite_scroll` / `bulk_sweep` / `detailed_logging` flags, so each feature can be toggled per plan from the portal.
+- New License config: portal URL, issued-key, and bundle-key fields; `Production Environment` toggle for dev/staging bypass.
+
+**In-admin License & Plans page + Stripe checkout**
+- New admin route `etechflow_psopremium/license/gate` with Weekly / Monthly / Yearly plan cards.
+- `Checkout` controller creates a Stripe Checkout session; `Activated` controller fetches the issued key from the portal and saves it automatically.
+- Payment settings group (Stripe secret/publishable key, currency).
+
+### Fixed
+- **Infinite Scroll selector** — the product-grid container selector did not match Luma's `<ol class="products list items product-items">` (the `products wrapper grid products-grid` classes sit on the parent `<div>`, not a nested element), so infinite scroll silently bailed. Now targets the list element directly; works on category + search pages.
+
+---
+
 ## [1.0.0] — 2026-05-21 — Initial Premium tier release
 
 First commercial release of the **Premium** add-on module. Pairs with PSO Pro to form a complete Amasty Page Speed Optimizer Premium ($599) alternative at $499.

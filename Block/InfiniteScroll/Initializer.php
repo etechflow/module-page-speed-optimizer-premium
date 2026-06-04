@@ -57,9 +57,13 @@ class Initializer extends Template
             'thresholdPx'   => $this->config->getScrollThresholdPx(),
             'maxPages'      => $this->config->getMaxAutoLoadPages(),
             'showBackToTop' => $this->config->isBackToTopEnabled(),
-            // CSS selectors — kept theme-agnostic. Most M2 themes use these
-            // exact classes; Hyvä also emits .products-grid as a container.
-            'containerSelector' => '.products.wrapper .products-grid > .product-items',
+            // CSS selectors — theme-agnostic. In Luma the listing is
+            // <ol class="products list items product-items"> (the "products
+            // wrapper grid products-grid" classes all sit on the parent DIV,
+            // not a nested element — so target the OL directly). Same OL on
+            // catalog category + catalogsearch result pages. Hyvä also emits
+            // .product-items as the grid container.
+            'containerSelector' => '.products.list.product-items',
             'paginationSelector' => '.pages',
             'productItemSelector' => '.product-item',
         ], JSON_UNESCAPED_SLASHES);
