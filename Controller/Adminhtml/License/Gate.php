@@ -36,6 +36,18 @@ class Gate extends Action
 
         $page = $this->pageFactory->create();
         $page->getConfig()->getTitle()->prepend(__('Page Speed Optimizer Premium — License Required'));
+
+        // Hand the portal "plans" endpoint to the gate so it can render the
+        // correct cards: a single lifetime card when the portal admin set this
+        // module to one-time, or the weekly/monthly/yearly cards for recurring.
+        $portalBase = rtrim(str_replace('/license/validate', '', $this->licenseValidator->getPortalUrl()), '/');
+        $domain     = $this->licenseValidator->getCurrentHost();
+        $plansUrl   = $portalBase . '/license/plans?module=page-speed-optimizer-premium&domain=' . urlencode($domain);
+
+        $block = $page->getLayout()->getBlock('etechflow.psoprem.license.gate');
+        if ($block) {
+            $block->setData('plans_url', $plansUrl);
+        }
         return $page;
     }
 }
