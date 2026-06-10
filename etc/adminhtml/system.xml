@@ -30,12 +30,6 @@
                     <config_path>etechflow_bundle/license/license_key</config_path>
                     <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
-                <field id="production_environment" translate="label comment tooltip" sortOrder="40" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Production Environment</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <tooltip>Yes for live sites, No for dev/staging on non-standard domains.</tooltip>
-                    <comment><![CDATA[<strong>Yes</strong> — live store; license enforced. <strong>No</strong> — dev/staging; licensing bypassed. Common dev hosts auto-detect.]]></comment>
-                </field>
             </group>
 
             <group id="payment" translate="label" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
