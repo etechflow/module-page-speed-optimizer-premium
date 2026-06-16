@@ -12,7 +12,7 @@
                 <label>Premium License</label>
                 <field id="license_key" translate="label comment tooltip" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Premium License Key</label>
-                    <tooltip>Paste your eTechFlow SP-XXXX subscription key (auto-saved after Stripe payment) or a per-module/bundle HMAC key.</tooltip>
+                    <tooltip>Paste your eTechFlow SP-XXXX subscription key (auto-saved after checkout) or a per-module/bundle HMAC key.</tooltip>
                     <comment><![CDATA[Paste your eTechFlow <strong>SP-XXXX</strong> subscription key (generated automatically after checkout) OR a per-module HMAC key. Pro license does NOT unlock Premium — it needs this key, or the shared Bundle key. Buy a subscription at <a href="etechflow_psopremium/license/gate">License &amp; Plans</a>.]]></comment>
                 </field>
                 <field id="issued_key" translate="label comment" sortOrder="15" type="obscure" showInDefault="1" showInWebsite="1" showInStore="1">
