@@ -4,12 +4,12 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <block class="ETechFlow\\PageSpeedOptimizerPremium\\Block\\Adminhtml\\UpdateNotice"
+            <block class="ETechFlow\PageSpeedOptimizerPremium\Block\Adminhtml\UpdateNotice"
                    name="etechflow_psop_update_notice"
                    template="ETechFlow_PageSpeedOptimizerPremium::update-notice.phtml"
                    cacheable="false"
                    before="-"/>
-            
+
             <block class="Magento\Backend\Block\Template"
                    name="etechflow.psoprem.license.gate"
                    template="ETechFlow_PageSpeedOptimizerPremium::license/gate.phtml"/>

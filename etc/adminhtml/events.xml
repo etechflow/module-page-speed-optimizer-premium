@@ -2,7 +2,11 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="controller_action_predispatch_etechflow_psopremium_license_gate">
-        <observer name="etechflow_psop_add_update_notification"
-                  instance="ETechFlow\PageSpeedOptimizerPremium\\Observer\\AddUpdateNotification"/>
+        <observer name="etechflow_psop_update_notification_gate"
+                  instance="ETechFlow\PageSpeedOptimizerPremium\Observer\AddUpdateNotification"/>
+    </event>
+    <event name="controller_action_predispatch_adminhtml_system_config_edit">
+        <observer name="etechflow_psop_update_notification_sysconfig"
+                  instance="ETechFlow\PageSpeedOptimizerPremium\Observer\AddUpdateNotification"/>
     </event>
 </config>

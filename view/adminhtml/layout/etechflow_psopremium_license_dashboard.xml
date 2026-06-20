@@ -9,10 +9,9 @@
                    template="ETechFlow_PageSpeedOptimizerPremium::update-notice.phtml"
                    cacheable="false"
                    before="-"/>
-
             <block class="Magento\Backend\Block\Template"
-                   name="etechflow.psoprem.license.activated"
-                   template="ETechFlow_PageSpeedOptimizerPremium::license/activated.phtml"/>
+                   name="etechflow.psoprem.license.dashboard"
+                   template="ETechFlow_PageSpeedOptimizerPremium::license/dashboard.phtml"/>
         </referenceContainer>
     </body>
 </page>

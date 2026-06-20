@@ -1,0 +1,27 @@
+<?php
+/** @var \Magento\Backend\Block\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+$settingsUrl = $block->getUrl('adminhtml/system_config/edit', ['section' => 'etechflow_pso_premium']);
+?>
+<style>
+.etf-dash{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0d1b2a;min-height:70vh;padding:48px 16px;color:#e8edf2;display:flex;align-items:center;justify-content:center;}
+.etf-dash-card{background:#1a2a3a;border:1px solid #2a3f55;border-radius:16px;padding:40px 36px;max-width:560px;width:100%;text-align:center;}
+.etf-dash-icon{font-size:52px;margin-bottom:16px;}
+.etf-dash-card h1{font-size:22px;font-weight:700;color:#fff;margin:0 0 10px;}
+.etf-dash-card p{color:#8fa3b8;font-size:14px;margin:0 0 28px;}
+.etf-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;color:#34d399;margin-bottom:24px;}
+.etf-btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.etf-btn{display:inline-flex;align-items:center;gap:6px;padding:11px 24px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;border:none;}
+.etf-btn-primary{background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;}
+</style>
+<div class="etf-dash">
+  <div class="etf-dash-card">
+    <div class="etf-dash-icon">&#9889;</div>
+    <div class="etf-badge">&#10003; License Active</div>
+    <h1>Page Speed Optimizer Premium</h1>
+    <p>Your premium subscription is active. Configure caching, minification, and lazy loading settings below.</p>
+    <div class="etf-btn-row">
+      <a href="<?= $escaper->escapeUrl($settingsUrl) ?>" class="etf-btn etf-btn-primary">&#9881;&#65039; Open Settings</a>
+    </div>
+  </div>
+</div>
